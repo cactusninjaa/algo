@@ -85,58 +85,6 @@
 // })
 
 
-// class Pokemon {
-//     constructor (name, attack, defense, hp, luck){
-//         this.name = name;
-//         this.attack = attack;
-//         this.defense = defense;
-//         this.hp = hp;
-//         this.luck = luck;
-//     }
-
-//     attackPokemon (adversaireDefense) {
-//         return this.attack - adversaireDefense
-//     }
-
-//     isLucky (){
-//         return (this.luck-1 === getRandomInt(this.luck)) 
-//     }
-// }
-    
-
-// let pikachu = new Pokemon('Pikachu', 50, 20, 100, 3);
-// let salameche = new Pokemon('Salamèche', 60, 10, 110, 2);
-
-// while (pikachu.hp > 0 || salameche > 0){
-//     if (!salameche.isLucky()) {
-//         salameche.hp -= pikachu.attackPokemon(salameche.defense)
-//         console.log(`Salamèche a ${salameche.hp} hp`)
-
-//         if (salameche.hp < 0) {
-//             console.log('Salamèche est dead')
-//         break
-//         }
-//     } else {
-//         console.log('Salamèche a esquivé')
-//     }
-
-//     if (!pikachu.isLucky()){
-//         pikachu.hp -= salameche.attackPokemon(pikachu.defense)
-//         console.log(`Pikachu a ${pikachu.hp} hp`)
-//         if (pikachu.hp < 0) {
-//             console.log('Pikachu est dead')
-//             break
-//         }
-//     } else {
-//         console.log('Pikachu a esquivé')
-//     }
-    
-// }
-
-// function getRandomInt(max) {
-//     return Math.floor(Math.random() * max);
-// }
-
 // class Student {
 //     constructor(name, html, css, javascript, php) {
 //         this.name = name
@@ -157,25 +105,4 @@
 // grosThony.getPHPLevel()
 
 
-class Pokemon{
-    constructor (name, attack, defense, hp, luck){
-        this.name = name;
-        this.attack = attack;
-        this.defense = defense;
-        this.hp = hp;
-        this.luck = luck;
-    }
 
-    attack(pokemon){
-        if (this.isLucky()){
-            pokemon.hp -= poke
-
-        } else {
-            console.log('raté')
-        }
-    }
-
-    isLucky(){
-        return this.luck > Math.random()
-    }
-}
