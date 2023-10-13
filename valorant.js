@@ -33,7 +33,7 @@ let defenseTeam = {
     characters: []
 }
 
-
+//Fonction qui crée les deux teams
 function createTeam(team) {
     team.playerLiving = 5;
     if (team.characters.length != 0){
@@ -49,6 +49,7 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
 
+//Fonction pour avoir une team aléatoire avec une chance sur 2
 function chooseRandomTeam(){
     if (Math.random() > 0.5){
         return attackTeam
@@ -57,6 +58,7 @@ function chooseRandomTeam(){
     }
 }
 
+//Fonction pour avoir un joueur aléatoire dans la team choisie
 function chooseRandomPlayer(team) {
     let randomPlayer = team.characters[getRandomInt(5)]
     if (randomPlayer.living){
@@ -68,8 +70,8 @@ function chooseRandomPlayer(team) {
     }
 }
 
-
-function firstRound(){
+//Fonction pour avoir un joueur aléatoire dans la team choisie
+function firstFight(){
     let team = chooseRandomTeam();
     let playerDead = team.characters[getRandomInt(5)]
     team.playerLiving --
@@ -79,6 +81,7 @@ function firstRound(){
     spikePlant(team)
 }
 
+//Fonction pour savoir si le spike est planté ou non
 function spikePlant(team){
     let spikePlantingChance = Math.random();
 
@@ -93,17 +96,17 @@ function spikePlant(team){
         console.log(`Les attaquants n'ont pas réussi a planter`)
     }
 }
-
+//Fonction des combats du round
 function teamFight(){
     let killChance = Math.random()
-    if (gameValorant.spikePlanted){
-        if (killChance > 0.3){
+    if (gameValorant.spikePlanted){ 
+        if (killChance > 0.3){ //70% de chance si le spike est planté de kill pour les attaquants
             kill(defenseTeam)
         } else {
             kill(attackTeam)
         }
     } else {
-        if (killChance > 0.5){
+        if (killChance > 0.5){ //50% de chance si le spike est planté de kill
             kill(defenseTeam)
         } else {
             kill(attackTeam)
@@ -111,7 +114,8 @@ function teamFight(){
     }
 }
 
-function kill(team){
+//Fonction pour kill un joueur dans l'équipe voulue
+function kill(team){ 
     let playerChoosedName = chooseRandomPlayer(team)
     team.playerLiving --
 
@@ -126,6 +130,8 @@ function playGame(){
         gameValorant.roundNumber ++
 
         console.log(`----`)
+        console.log(`----`)
+        console.log(`----`)
         console.log(`Début du tour ${gameValorant.roundNumber}`)
         console.log(`----`)
 
@@ -134,7 +140,7 @@ function playGame(){
         createTeam(attackTeam);
         createTeam(defenseTeam);
 
-        firstRound()
+        firstFight()
 
         while (defenseTeam.playerLiving!= 0 && attackTeam.playerLiving != 0){
             teamFight()
